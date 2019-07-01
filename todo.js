@@ -24,13 +24,16 @@ const app = new Vue({
         }
     },
     watch: {
-        todolist: function() {
+        todolist: {
+            handler: function() {
             // 保存
             localStorage.setItem(
                 this.storageKey,
                 JSON.stringify(this.todolist)
             );
+        },
+        deep: true
         }
-    },
+    }
     
 });
