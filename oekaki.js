@@ -75,7 +75,40 @@ const vm = new Vue({
             this.lines.pop();
 
             //ポイントを2つづつ取り出して描画する
-
+            for (i = 0; i < this.lines.length; i++) {
+                const line = this.lines[i];
+                for (j= 0; j < line.points.length -1; j++) {
+                    point1 = line.points[j];
+                    point2 = line.points[j + 1];
+                    ctx.strokeStyle = line.color;
+                    ctx.lineWidth = line.width;
+                    ctx.beginPath();
+                    ctx.moveTo(point1.x, point1.y);
+                    ctx.lineTo(point2.x, point2.y);
+                    ctx.stroke();
+                }
+            }
+        },
+        redraw: function() {
+            if (this.lines === 0) return;
+            //キャンバスをクリアする
+            const ctx = this.canvas.getContext('2d');
+            ctx.clearRect(0,0, this.canvas.width, this.canvas.height)
+            for (i = 0; i < this.lines.length; i++) {
+                const line = this.lines[i];
+                line.color = this.color // 色を選択色に
+                for (j = 0; j < line.points.length -1; j++) {
+                    point1 = line.points[j];
+                    point2 = line.points[j + 1];
+                    ctx.strokeStyle = line.color;
+                    ctx.lineWidth = line.width;
+                    ctx.beginPath();
+                    ctx.moveTo(point1.x, point1.y);
+                    ctx.lineTo(point2.x, point2.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
         },
     },
     mounted: function() {
