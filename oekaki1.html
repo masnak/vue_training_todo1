@@ -20,7 +20,11 @@
         <button @click="clearAll()">すべて消去</button>
         <button @click="undo()">ひとつ前の線を消去</button>
         <button @click="redraw()">選択色で再描画</button>
-        <canvas ref="myCanvas" width="600" height="400" @mousedown="mousedown" @mousemove="mousemove"
+        <canvas ref="myCanvas" 
+                width="600" 
+                height="400" 
+                @mousedown="mousedown" 
+                @mousemove="mousemove"
             @mouseup="mouseup"></canvas>
 
     </div>
