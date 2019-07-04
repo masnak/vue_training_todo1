@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<div id="app">
+<ul>
+    <li v-for="number in numbers">{{ number | fizzbuzz }}</li>
+</ul>
+</div>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                numbers: Array.from(new Array(100)).map((v, i) => i + 1)
+                    },
+            filters: {
+                fizzbuzz: function(number) {
+                    if (number % 15 === 0) {
+                        return 'FizzBuzz';
+                    } else if (number % 5 === 0) {
+                        return 'Buzz'
+                    } else if (number % 3 === 0) {
+                        return 'Fizz'
+                    } else {
+                        return number
+                    }
+                },
+
+            }
+        }
+          
+    );
+    </script>
+</body>
+
+</html>
