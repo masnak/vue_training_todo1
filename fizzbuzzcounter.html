@@ -13,7 +13,7 @@
         var counter = {
             template:
                 '<div><h1>FizzBuzzCounter</h1>' +
-                '<button @click="cdown">カウント</button>' +
+                '<button @click="countup">カウントアップ</button>' +
                 '<p>{{ count | fizzbuzz }}</p>' +
                 '</div>',
             data: function () {
@@ -22,7 +22,7 @@
                 };
             },
             methods: {
-                cdown: function () {
+                countup: function () {
                     ++this.count;
                 }
             },
