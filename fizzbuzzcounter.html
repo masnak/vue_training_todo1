@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>FizzBuzzCounter</title>
+</head>
+<body>
+    <div id="app">
+        <counter></counter>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        var counter = {
+            template:
+                '<div><h1>FizzBuzzCounter</h1>' +
+                '<button @click="cdown">カウント</button>' +
+                '<p>{{ count | fizzbuzz }}</p>' +
+                '</div>',
+            data: function () {
+                return {
+                    count: 1
+                };
+            },
+            methods: {
+                cdown: function () {
+                    ++this.count;
+                }
+            },
+            filters: {
+                fizzbuzz: function (count) {
+                    if (count % 15 === 0) {
+                        return 'FizzBuzz';
+                    } else if (count % 5 === 0) {
+                        return 'Buzz'
+                    } else if (count % 3 === 0) {
+                        return 'Fizz'
+                    } else {
+                        return count
+                    }
+                },
+            }
+        };
+        var app = new Vue({
+            el: '#app',
+            components: {
+                counter: counter
+            }
+        });
+    </script>
+</body>
+</html>
